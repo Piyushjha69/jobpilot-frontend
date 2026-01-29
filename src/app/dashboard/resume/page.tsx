@@ -10,8 +10,6 @@ import {
     Briefcase,
     Upload,
     FileText,
-    Trash2,
-    Download,
     Eye,
     EyeOff,
     CheckCircle2,
@@ -355,7 +353,7 @@ export default function ResumePage() {
                                                     resume.skills.map((skill, i) => (
                                                         <Badge
                                                             key={i}
-                                                            variant="secondary"
+                                                            variant="success"
                                                             className="bg-white/5 text-white/70 border-white/10"
                                                         >
                                                             {skill}

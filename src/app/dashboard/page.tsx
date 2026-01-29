@@ -12,7 +12,6 @@ import {
     FileText,
     TrendingUp,
     Search,
-    Bell,
     User,
     LogOut,
     Plus,

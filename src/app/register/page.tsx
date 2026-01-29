@@ -1,7 +1,7 @@
 "use client";
 
 import { register } from "@/services/auth";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -13,7 +13,7 @@ export default function RegisterPage() {
     const [password, setPassword] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState("");
-    const router = useRouter();
+    // const router = useRouter();
 
     const handleRegister = async (e: React.FormEvent) => {
         e.preventDefault();
