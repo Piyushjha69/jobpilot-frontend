@@ -4,10 +4,8 @@ export interface User {
     email: string;
 }
 
-export interface AuthResponse {
+export interface AuthData {
     accessToken: string;
     refreshToken: string;
     user: User;
-    status: number;
-    message: string;
 }

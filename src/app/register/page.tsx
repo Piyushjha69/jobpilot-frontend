@@ -22,12 +22,14 @@ export default function RegisterPage() {
 
         try {
             const res = await register(name, email, password);
-            if (res && (res.status === 200 || res.status === 201)) {
-                router.push("/login");
-            } else if (res && res.message) {
-                setError(res.message);
+            if (res.success && res.data) {
+                localStorage.setItem("accessToken", res.data.accessToken);
+                localStorage.setItem("refreshToken", res.data.refreshToken);
+                // Small delay to ensure tokens are stored before navigation
+                await new Promise(resolve => setTimeout(resolve, 100));
+                window.location.href = "/dashboard";
             } else {
-                setError("Registration failed. Please try again.");
+                setError(res.message || "Registration failed. Please try again.");
             }
         } catch (err) {
             setError("An unexpected error occurred.");

@@ -22,14 +22,14 @@ export default function LoginPage() {
         try {
             const res = await login(email, password);
 
-            if (res && (res.status === 200 || res.status === 201) && res.accessToken) {
-                localStorage.setItem("accessToken", res.accessToken);
-                localStorage.setItem("refreshToken", res.refreshToken);
-                router.push("/dashboard");
-            } else if (res && res.message) {
-                setError(res.message);
+            if (res.success && res.data) {
+                localStorage.setItem("accessToken", res.data.accessToken);
+                localStorage.setItem("refreshToken", res.data.refreshToken);
+                // Small delay to ensure tokens are stored before navigation
+                await new Promise(resolve => setTimeout(resolve, 100));
+                window.location.href = "/dashboard";
             } else {
-                setError("Login failed. Please try again.");
+                setError(res.message || "Login failed. Please try again.");
             }
         } catch (err) {
             setError("An unexpected error occurred.");
